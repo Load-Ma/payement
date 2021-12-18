@@ -9,29 +9,23 @@ namespace Payement
 {
     public class Party
     {
-        public string ID { get; set; }
-        public int Organisator_ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
-        public Party(int organisator_id, string name)
+        public Party(string name)
         {
-            ID = GenerateUID();
-            Organisator_ID = organisator_id;
             Name = name;
         }
 
-        public Party(string id, int organisator_id, string name)
+        public Party(int id, string name)
         {
             ID = id;
-            Organisator_ID = organisator_id;
             Name = name;
         }
 
-        private string GenerateUID()
+        public override string ToString()
         {
-            Guid g = Guid.NewGuid();
-
-            return g.ToString();
+            return $"ID: {this.ID}, Name: {this.Name}";
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Payement.DAL
         }
 
         #region abstract methode
-        public abstract void Delete(Type_DAL item);
+        public abstract void Delete(int id);
         public abstract List<Type_DAL> GetAll();
         public abstract Type_DAL GetByID(int ID);
         public abstract Type_DAL Insert(Type_DAL item);

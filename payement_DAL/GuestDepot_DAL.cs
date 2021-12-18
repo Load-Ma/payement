@@ -9,20 +9,45 @@ namespace Payement.DAL
 {
     public class GuestDepot_DAL : Depot_DAL<Guest_DAL>
     {
-        public override void Delete(Guest_DAL g)
+        public override void Delete(int id)
         {
             CreateConnectionAndCommand();
 
             command.CommandText = "delete from guests where ID=@ID";
-            command.Parameters.Add(new SqlParameter("@ID", g.ID));
+            command.Parameters.Add(new SqlParameter("@ID", id));
             var nombreDeLignesAffectees = (int)command.ExecuteNonQuery();
 
             if (nombreDeLignesAffectees != 1)
             {
-                throw new Exception($"Impossible de supprimer l'invité d'ID {g.ID}");
+                throw new Exception($"Impossible de supprimer l'invité d'ID {id}");
             }
 
             DestroyConnectionAndCommand();
+        }
+
+        public List<Guest_DAL> GetAllFromParty(int ID)
+        {
+            CreateConnectionAndCommand();
+
+            command.CommandText = "select id, party_id, username, spent from guests where party_id=@party_id";
+            command.Parameters.Add(new SqlParameter("@party_id", ID));
+            var reader = command.ExecuteReader();
+
+            var listGuest = new List<Guest_DAL>();
+
+            while (reader.Read())
+            {
+                var g = new Guest_DAL(reader.GetInt32(0),
+                                reader.GetInt32(1),
+                                reader.GetString(2),
+                                Convert.ToSingle(reader.GetDouble(3)));
+
+                listGuest.Add(g);
+            }
+
+            DestroyConnectionAndCommand();
+
+            return listGuest;
         }
 
         public override List<Guest_DAL> GetAll()
@@ -37,9 +62,9 @@ namespace Payement.DAL
             while (reader.Read())
             {
                 var g = new Guest_DAL(reader.GetInt32(0),
-                                reader.GetString(1),
+                                reader.GetInt32(1),
                                 reader.GetString(2),
-                                reader.GetFloat(3));
+                                Convert.ToSingle(reader.GetDouble(3)));
 
                 listGuest.Add(g);
             }
@@ -61,7 +86,7 @@ namespace Payement.DAL
             if (reader.Read())
             {
                 g = new Guest_DAL(reader.GetInt32(0),
-                        reader.GetString(1),
+                        reader.GetInt32(1),
                         reader.GetString(2),
                         reader.GetFloat(3));
             }
