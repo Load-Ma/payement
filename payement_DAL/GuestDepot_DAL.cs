@@ -88,7 +88,7 @@ namespace Payement.DAL
                 g = new Guest_DAL(reader.GetInt32(0),
                         reader.GetInt32(1),
                         reader.GetString(2),
-                        reader.GetFloat(3));
+                        Convert.ToSingle(reader.GetDouble(3)));
             }
             else
                 throw new Exception($"Pas d'invité dans la BDD avec l'ID {ID}");
