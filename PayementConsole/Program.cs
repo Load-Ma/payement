@@ -57,11 +57,11 @@ namespace PayementConsole
             
             // Calcul
             
-            Dictionary<int, float> dettes = new Dictionary<int, float>();
+            Dictionary<int, float> dettes = new Dictionary<int, float>(); // key = id / value = spent
             Dictionary<int, string> planFinal = new Dictionary<int, string>(); // string order : IDdette-IDpreteur-Dette
 
             // moyenne
-            float moyenne = 0.00f;
+            float moyenne = 0.0f;
             listGuest.ForEach(g => moyenne += g.Spent);
             moyenne /= listGuest.Count;
 

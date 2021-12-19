@@ -14,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayementConsole", "Payement
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3F2FDF7C-17AE-4F69-9C59-8420BED4A396}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payement.Tests", "Payement.Tests\Payement.Tests.csproj", "{EDFC325B-D965-4DF4-B86F-3A5C22EE3CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payement.Tests", "Payement.Tests\Payement.Tests.csproj", "{EDFC325B-D965-4DF4-B86F-3A5C22EE3CFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payement.DAL.Tests", "Payement.DAL.Tests\Payement.DAL.Tests.csproj", "{A028F6BA-2FA5-4F25-B6CA-3557473D8AAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payement.DAL.Tests", "Payement.DAL.Tests\Payement.DAL.Tests.csproj", "{A028F6BA-2FA5-4F25-B6CA-3557473D8AAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
